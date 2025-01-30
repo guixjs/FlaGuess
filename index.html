@@ -3,20 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flag</title>
+    <title>FlaGuess</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="content">
-        <div class="infosCountry">
-            <img src="https://flagcdn.com/w320/br.png">
-            <p class="capital"></p>
-            
-
+        <div class="flag">
+            <img src="loading.png" id="loading">
         </div>
-        <form id="form">
-            <input type="text" name="input" id="form-input">
-            <button type="button">+</button>
+        <form class="form">
+            <input type="text" placeholder="Digite sua resposta">
+            <button type="submit">></button>
         </form>
+        <div class="dicas">
+            <div class="dica dica1">
+                <p id="area">Área:</p>
+                <p id="populacao">População:</p>
+            </div>
+            <div class="dica dica2">
+                <p id="moeda">Moeda:</p>
+                <p id="idioma">Idioma:</p>
+            </div>
+            <div class="dica dica3">
+                <p id="capital">Capital:</p>
+                <p id="continente">Continente:</p>
+            </div>
+        </div>
+        <div class="btns">
+            <button>Mostrar resposta</button>
+            <button>Próxima dica</button>
+        </div>
     </div>
 
     <script src="script.js"></script>
