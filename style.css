@@ -1,5 +1,150 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Pixelify+Sans:wght@400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Josefin Sans", sans-serif;
+}
+
+body {
+    background-color: #007bbd; /* Azul de fundo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.content {
+    background-color: #d9d9d9; /* Cinza claro */
+    width: 450px;
+    height: 90%;
+    max-height: 700px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Área da bandeira */
+.flag {
+    width: 320px;
+    height: 224px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+img[src=""] {
+    visibility: hidden;
+}
+
+.flag img {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* Campo de resposta */
+.form {
+    display: flex;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.form input {
+    flex: 1;
+    padding: 8px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+.form button {
+    background-color: #00b050; /* Verde */
+    border: none;
+    padding: 8px 12px;
+    margin-left: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+}
+
+/* Área das dicas */
+.dicas {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    
+}
+
+.dica {
+    background-color: #8f8f8f;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 18px;
+    overflow-wrap: break-word; /* Alternativa moderna */
+    white-space: normal; /* Permite quebras de linha */
+}
+.dica2, .dica3{
+    position: relative;
+}
+.bloqueado{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    right: 0;
+    top: 0%;
+    background-color: #444444;
+    border-radius: 5px;
+    border: none;
+    opacity: 100%;
+}
+
+
+
+
+/* Botões inferiores */
+.btns {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btns button {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.btnRes {
+    background-color: #f4a000; /* Laranja */
+    margin-right: 5px;
+}
+
+.btnDica {
+    background-color: #00b050; /* Verde */
+}
+#iconFlag{
+    font-size: 100px;
+    
 }

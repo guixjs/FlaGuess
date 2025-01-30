@@ -1,3 +1,10 @@
+function iconBloquearBandeira(texto){
+    const btnTeste = document.getElementById("iconFlag")
+    btnTeste.innerText = texto
+    // progress_activity - QUANDO ESTIVER CARREGANDO
+    //lock - quando estiver bloqueado
+}
+
 let dicas = 1;
 const btnDica = document.querySelector(".btnDica")
 
@@ -34,7 +41,7 @@ async function mostrarDicas() {
     document.getElementById("populacao").textContent = `Total de habitantes: ${infoPais.populacao}`
 
 
-    document.getElementById("moeda").textContent = `Símbolo da moeda local: ${infoPais.moeda}`
+    document.getElementById("moeda").textContent = `Moeda: ${infoPais.moeda}`
     document.getElementById("idioma").textContent = `Idioma(s): ${infoPais.idioma}`
 
 
@@ -43,7 +50,7 @@ async function mostrarDicas() {
 
 
     document.querySelector("img").src = infoPais.bandeira
-  
+  iconBloquearBandeira(" ")
     
 }
 
