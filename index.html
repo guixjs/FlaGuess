@@ -10,37 +10,40 @@
 </head>
 <body>
     <div class="content">
+        <div class="msg">
+            <h2>ADIVINHE O PAÍS</h2>
+        </div>
         <div class="flag dica4">
-            <span class="material-symbols-outlined" id="iconFlag"></span>
+            <span class="material-symbols-outlined" id="iconFlag">lock</span>
             <img src="" alt=" ">
         </div>
         <form class="form">
-            <input type="text" placeholder="Digite sua resposta">
+            <input type="text" placeholder="Digite sua resposta" id="input">
             <button type="submit">></button>
         </form>
         <div class="dicas">
             <div class="dica dica1">
-                <p id="area">Área:</p>
-                <p id="populacao">População:</p>
+                <p id="area">Área (em Km²):</p>
+                <p id="populacao">Total de habitantes:</p>
             </div>
             <div class="dica dica2">
                 <div class="bloqueado">
-                    <span class="material-symbols-outlined">lock</span>
+                    <!-- <span class="material-symbols-outlined">lock</span> -->
                 </div>
                 <p id="moeda">Moeda:</p>
-                <p id="idioma">Idioma:</p>
+                <p id="idioma">Idioma(s):</p>
             </div>
             <div class="dica dica3">
                 <div class="bloqueado">
-                    <span class="material-symbols-outlined">lock</span>
+                    <!-- <span class="material-symbols-outlined">lock</span> -->
                 </div>
                 <p id="capital">Capital:</p>
                 <p id="continente">Continente:</p>
             </div>
         </div>
         <div class="btns">
-            <button class="btnRes">Mostrar resposta</button>
-            <button class="btnDica">Próxima dica</button>
+            <button class="btnRes" onclick="desistir()">Mostrar resposta</button>
+            <button class="btnDica" onclick="mostrarDicas()">Próxima dica</button>
         </div>
     </div>
 
