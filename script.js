@@ -6,6 +6,7 @@ const btnMostrarResposta = document.querySelector(".btnRes")
 
 function desistir(){
     input.value = paisDaVez.nome
+    
 }
 
 //impede a página de recarregar e chama a verificarResposta
@@ -20,7 +21,7 @@ form.addEventListener("submit",(evento)=>{
         document.querySelector("h2").textContent = "ERROU"
     }
     
-    input.value = " "
+    input.value = ""
 })
 
 // VARIAVEIS
@@ -52,44 +53,50 @@ async function sortearPais(){
     paisSorteado = {
         nome: Object.values(pais.translations.por)[1],
         bandeira: pais.flags.png,
-        area: pais.area,
-        populacao: pais.population,
         moeda: Object.values(pais.currencies)[0].symbol,
         idioma: Object.values(pais.languages).join(", "),
         continente: pais.continents[0],
         capital: pais.capital[0]
     }
-    // verificarResposta()
+    
     paisDaVez = paisSorteado
     return paisSorteado
 }
 
 
 async function mostrarDicas() {
+    input.value = ''
     const infoPais = await sortearPais()
-    
-    
-    document.getElementById("area").textContent = `Área (em Km²): ${infoPais.area}`
-    document.getElementById("populacao").textContent = `Total de habitantes: ${infoPais.populacao}`
-
 
     document.getElementById("moeda").textContent = `Moeda: ${infoPais.moeda}`
     document.getElementById("idioma").textContent = `Idioma(s): ${infoPais.idioma}`
-
 
     document.getElementById("capital").textContent = `Capital: ${infoPais.capital}`
     document.getElementById("continente").textContent = `Continente: ${infoPais.continente}`
 
     
     const flag = document.querySelector("img");
-
+    
     flag.onload = function() {
         document.getElementById("iconFlag").style.display = "none";
     };
     
+    letrasNome()
     flag.src = infoPais.bandeira;
 }
 
+async function letrasNome(){
+    const dicaNome = document.getElementById("letrasPais")
+    const qtdLetras = document.getElementById("qtdLetras")
+    const nome = await paisDaVez.nome
+    let a = "";
+    for (let i = 0; i < nome.length; i++) {
+        // dicaNome.innerText += "_"
+        a +="_"
+    }
+    dicaNome.innerText = `Resposta: ${a}` 
+    qtdLetras.innerHTML = `Quantidade de letras: ${nome.length} letras`
+}
 
 
 async function teste() {
@@ -97,4 +104,13 @@ async function teste() {
     await console.log(paisDaVez)
 }
 teste()
+
+async function obterCultura(pais) {
+    const response = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${pais}`);
+    const data = await response.json();
+    console.log(data.extract);
+}
+
+// Teste com Comores
+obterCultura("Comoros");
 
