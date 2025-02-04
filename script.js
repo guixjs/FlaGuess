@@ -4,9 +4,9 @@ const form = document.querySelector(".form")
 const input = document.getElementById("input")
 const btnMostrarResposta = document.querySelector(".btnRes")
 
-function desistir(){
-    input.value = paisDaVez.nome
-    
+const dicaNome = document.getElementById("letrasPais")
+function mostrarRes(){
+    dicaNome.innerHTML = `Resposta: ${paisDaVez.nome}`
 }
 
 //impede a página de recarregar e chama a verificarResposta
@@ -86,31 +86,27 @@ async function mostrarDicas() {
 }
 
 async function letrasNome(){
-    const dicaNome = document.getElementById("letrasPais")
-    const qtdLetras = document.getElementById("qtdLetras")
     const nome = await paisDaVez.nome
-    let a = "";
+    let nomePais = ''
+    console.log(nome)
     for (let i = 0; i < nome.length; i++) {
-        // dicaNome.innerText += "_"
-        a +="_"
+        if (nome[i] === " ") {
+            nomePais += " ";
+        } else if (i === 0 || nome[i - 1] === " ") {
+            nomePais += nome[i];
+        } else {
+            nomePais += "_";
+        }
     }
-    dicaNome.innerText = `Resposta: ${a}` 
-    qtdLetras.innerHTML = `Quantidade de letras: ${nome.length} letras`
-}
 
+    console.log(nomePais)
+    dicaNome.innerText = `Resposta: ${nomePais} (${nome.length} letras)`
+
+}
 
 async function teste() {
     await mostrarDicas()
-    await console.log(paisDaVez)
 }
 teste()
 
-async function obterCultura(pais) {
-    const response = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${pais}`);
-    const data = await response.json();
-    console.log(data.extract);
-}
-
-// Teste com Comores
-obterCultura("Comoros");
 

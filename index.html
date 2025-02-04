@@ -18,7 +18,7 @@
             <img src="" alt=" ">
         </div>
         <form class="form">
-            <input type="text" placeholder="Digite sua resposta" id="input">
+            <input type="text" placeholder="Digite sua resposta" id="input" autocomplete="off">
             <button type="submit">></button>
         </form>
         <div class="dicas">
@@ -38,11 +38,10 @@
                     <!-- <span class="material-symbols-outlined">lock</span> -->
                 </div>
                 <p id="letrasPais"></p>
-                <p id="qtdLetras"></p>
             </div>
         </div>
         <div class="btns">
-            <button class="btnRes" onclick="desistir()">Mostrar resposta</button>
+            <button class="btnRes" onclick="mostrarRes()">Mostrar resposta</button>
             <button class="btnDica" onclick="mostrarDicas()">Próxima dica</button>
         </div>
     </div>
