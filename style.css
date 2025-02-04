@@ -5,12 +5,15 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Josefin Sans", sans-serif;
+
 }
 
 body {
     background-color: #007bbd; /* Azul de fundo */
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    gap: 7px;
     align-items: center;
     height: 100vh;
 }
@@ -28,6 +31,7 @@ body {
     justify-content: space-evenly;
     align-items: center;
     overflow: hidden;
+    border: 5px solid #e7000000;
 }
 
 /* Área da bandeira */
@@ -101,8 +105,9 @@ img[src=""] {
 }
 .dica2, .dica3{
     position: relative;
+    
 }
-/* .bloqueado{
+.bloqueado{
     position: absolute;
     display: flex;
     width: 100%;
@@ -115,7 +120,7 @@ img[src=""] {
     align-items: center;
     justify-content: center;
     opacity: 100%;
-} */
+}
 
 
 
@@ -123,9 +128,10 @@ img[src=""] {
 /* Botões inferiores */
 .btns {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
+    justify-content: center;
+    width: 90%;
     margin-top: 10px;
+    gap:10px
 }
 
 .btns button {
@@ -140,15 +146,28 @@ img[src=""] {
 }
 
 .btnRes {
-    background-color: #f4a000; /* Laranja */
-    margin-right: 5px;
+    background-color: #f43900; /* Laranja */
 }
 
 .btnDica {
-    background-color: #00b050; /* Verde */
+    background-color: #dacc08; /* Verde */
+}
+.btnProx {
+    background-color: #2bda08; /* Verde */
 }
 #iconFlag{
     font-size: 100px;
     position: absolute;
 }
 
+footer {
+    
+    text-align: center;
+    margin-top: 20px; 
+    width: 100%; 
+}
+footer a{
+    color: #ffffff;
+    font-size: 18px;
+
+}

@@ -11,10 +11,10 @@
 <body>
     <div class="content">
         <div class="msg">
-            <h2>ADIVINHE O PAÍS</h2>
+            <h2>ADIVINHE A BANDEIRA</h2>
         </div>
         <div class="flag dica4">
-            <span class="material-symbols-outlined" id="iconFlag">lock</span>
+            
             <img src="" alt=" ">
         </div>
         <form class="form">
@@ -28,24 +28,28 @@
             </div>
             <div class="dica dica2">
                 <div class="bloqueado">
-                    <!-- <span class="material-symbols-outlined">lock</span> -->
+                    <span class="material-symbols-outlined">lock</span>
                 </div>
                 <p id="capital">Capital:</p>
                 <p id="continente">Continente:</p>
             </div>
             <div class="dica dica3">
                 <div class="bloqueado">
-                    <!-- <span class="material-symbols-outlined">lock</span> -->
+                    <span class="material-symbols-outlined">lock</span>
                 </div>
                 <p id="letrasPais"></p>
             </div>
         </div>
         <div class="btns">
             <button class="btnRes" onclick="mostrarRes()">Mostrar resposta</button>
-            <button class="btnDica" onclick="mostrarDicas()">Próxima dica</button>
+            <button class="btnDica" onclick="mostrarDica()">Próxima dica</button>
+            <button class="btnProx" onclick="proxPais()">Próximo País</button>
         </div>
-    </div>
-
+    </div>    
+    <footer>
+        <a href="https://github.com/guixjs/FlaGuess" target="_blank">Repositório</a>
+    </footer>
     <script src="script.js"></script>
 </body>
+
 </html>

@@ -5,34 +5,41 @@ const input = document.getElementById("input")
 const btnMostrarResposta = document.querySelector(".btnRes")
 
 const dicaNome = document.getElementById("letrasPais")
-function mostrarRes(){
-    dicaNome.innerHTML = `Resposta: ${paisDaVez.nome}`
-}
+const content = document.querySelector(".content")
+const titulo = document.querySelector("h2")
+
+const bloqueios = document.querySelectorAll(".bloqueado");
+
+
 
 //impede a página de recarregar e chama a verificarResposta
 form.addEventListener("submit",(evento)=>{
     evento.preventDefault()
-    console.log(input.value)
-    nome = paisDaVez.nome.toLowerCase()
-    if(input.value == paisDaVez.nome){
-        document.querySelector("h2").textContent = "ACERTOU"
-        mostrarDicas()
-    }else{
-        document.querySelector("h2").textContent = "ERROU"
-    }
     
-    input.value = ""
+    if(input.value.toLowerCase() == paisDaVez.nome.toLowerCase()){
+        titulo.textContent = "ACERTOU"
+        content.style.border = "5px solid #00e700"
+        setTimeout(resetarTentativas,900)
+        proxPais()
+    }else{
+        titulo.textContent = "ERROU"
+        content.style.border = "5px solid #e70000"
+        setTimeout(resetarTentativas,900)
+    }
 })
 
 // VARIAVEIS
 let listaPaises = []
 let paisDaVez = null
 let indexRepetidos = []
+let dicasLiberadas = 0; // Começa sem dicas liberadas
 
 
 async function carregarPaises() {
-    const response = await fetch(`https://restcountries.com/v3.1/all`)
-    listaPaises = await response.json()
+    if(listaPaises.length === 0){
+        const response = await fetch(`https://restcountries.com/v3.1/all`)
+        listaPaises = await response.json()
+    }
     return listaPaises
 }
 
@@ -40,7 +47,7 @@ async function sortearPais(){
     if(listaPaises.length == 0){
         listaPaises = await carregarPaises()
     }
-    const indexSorteado = Math.floor(Math.random() * listaPaises.length);
+    let indexSorteado = Math.floor(Math.random() * listaPaises.length);
 
     indexRepetidos.forEach(repetidos => {
         if(indexSorteado == repetidos){
@@ -64,8 +71,8 @@ async function sortearPais(){
 }
 
 
-async function mostrarDicas() {
-    input.value = ''
+async function inserirInfos() {
+
     const infoPais = await sortearPais()
 
     document.getElementById("moeda").textContent = `Moeda: ${infoPais.moeda}`
@@ -76,19 +83,14 @@ async function mostrarDicas() {
 
     
     const flag = document.querySelector("img");
-    
-    flag.onload = function() {
-        document.getElementById("iconFlag").style.display = "none";
-    };
-    
-    letrasNome()
     flag.src = infoPais.bandeira;
+    await letrasNome()
+    
 }
 
 async function letrasNome(){
     const nome = await paisDaVez.nome
     let nomePais = ''
-    console.log(nome)
     for (let i = 0; i < nome.length; i++) {
         if (nome[i] === " ") {
             nomePais += " ";
@@ -98,15 +100,42 @@ async function letrasNome(){
             nomePais += "_";
         }
     }
-
-    console.log(nomePais)
     dicaNome.innerText = `Resposta: ${nomePais} (${nome.length} letras)`
 
 }
 
-async function teste() {
-    await mostrarDicas()
+function mostrarRes(){
+    if(dicasLiberadas<2){
+        mostrarDica()
+        mostrarDica()
+    }
+    dicaNome.innerHTML = `Resposta: ${paisDaVez.nome}`
+    setTimeout(proxPais,1500)
 }
-teste()
 
+function mostrarDica(){
+    if (dicasLiberadas < bloqueios.length) {
+        bloqueios[dicasLiberadas].style.opacity = "0%";
+        dicasLiberadas++;
+    }
+}
+async function proxPais(){
+    bloqueios.forEach((bloqueio) => {
+        bloqueio.style.opacity = "100%"; // Bloqueia novamente as dicas
+    });
+    dicasLiberadas = 0;
+    await inserirInfos()
+}
 
+function resetarTentativas(){
+    input.value = ""
+    content.style.border = ""
+    titulo.textContent = "ADIVINHE A BANDEIRA"
+}
+async function iniciarJogo(){
+    alert("Não esqueça dos acentos!\nDivirta-se :)")
+    await carregarPaises()
+    inserirInfos()
+    
+}
+iniciarJogo()
